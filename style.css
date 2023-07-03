@@ -1,0 +1,70 @@
+@import url("https://fonts.googleapis.com/css?family=Ubuntu");
+@import url(https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,regular,500,600,700,800,900,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic);
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  max-width: 1440px;
+  font-family: "Ubuntu", sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: center; */
+  gap: 1rem;
+  padding: 1rem;
+
+  margin: 0 auto;
+
+  background: url("https://images.unsplash.com/photo-1686946347357-689d223fe958?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80")
+   center center/cover;
+  width: 100vw;
+  height: 100vh;
+}
+button,
+input {
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  font-family: inherit;
+}
+/*  */
+.box {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  /* width: 400px; */
+}
+.bigDiv {
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 14px;
+  width: 157px;
+  height: max-content;
+  background-color: rgba(255, 255, 255, 0.568);
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.proName {
+  margin-block: 10px 5px;
+  color: #606060;
+}
+.proPrice {
+  font-weight: bold;
+}
+.imgProducts {
+  border-radius: 10px;
+  width: 100%;
+  /* height: 236px; */
+  position: relative;
+}
+.mainImg {
+  border-radius: 10px;
+  width: 100%;
+  /* height: 236px; */
+}
+.basket {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;  
+}
