@@ -4,22 +4,27 @@ const users = document.querySelector("#users");
 // .....................
 let usersName = [];
 
-fetch("https://dummyjson.com/users")
-  .then((res) => res.json())
-  .then((json) => {
-    usersName = json.users;
-    // console.log(usersName);
+users.addEventListener("click", () => {
+  fetch("https://dummyjson.com/users")
+    .then((res) => res.json())
+    .then((json) => {
+      usersName = json.users;
+      console.log(usersName); //show
 
-    // firstName
-    // lastName
-    // console.log(usersName.fisrtName);
-    for (let index = 0; index < usersName.length; index++) {
-      const element = usersName[index].fisrtName;
+      for (let index = 0; index < usersName.length; index++) {
+        const element = usersName[index].firstName;
+        const lastName = usersName[index].lastName;
 
-      const lastName = usersName[index].lasttName;
-      // console.log(`${element} ${lastName}`);
-    }
-  });
+        let someDiiv = document.createElement("div");
+        someDiiv.textContent = `◽ ${element}  ${lastName}`;
+        rangeInput.insertAdjacentElement("afterend", someDiiv);
+      }
+    });
+});
+
+setTimeout(() => {
+  usersName;
+}, 5000);
 // ..................................
 let allArray = [];
 
@@ -36,7 +41,7 @@ fetch(fetchProducts)
 const rangeInput = document.getElementById("myRange");
 
 rangeInput.addEventListener("change", function () {
-  const rangeValue = rangeInput.value;
+  rangeValue = rangeInput.value;
 
   console.log(rangeValue);
 
@@ -95,11 +100,9 @@ fetch("https://dummyjson.com/products")
     allArray = json.products;
 
     for (let index = 0; index < allArray.length; index++) {
-     
       let element = allArray[index].title;
       let pricEl = allArray[index].price;
       let imgTovary = allArray[index].images[1];
-     
 
       const newBigDiv = document.createElement("div");
       newBigDiv.className = "bigDiv";
@@ -115,7 +118,7 @@ fetch("https://dummyjson.com/products")
       const newBasketImg = document.createElement("img");
       newBasketImg.src = "./img/busket.png";
       newBasketImg.alt = "корзина";
-      newBasketImg.className = 'basket';
+      newBasketImg.className = "basket";
 
       const newProName = document.createElement("p");
       newProName.className = "proName";
@@ -125,7 +128,6 @@ fetch("https://dummyjson.com/products")
       newProPrice.className = "proPrice";
       newProPrice.textContent = `$ ${pricEl}`;
 
-  
       newImgProducts.appendChild(newMainImg);
       newImgProducts.appendChild(newBasketImg);
       newBigDiv.appendChild(newImgProducts);
