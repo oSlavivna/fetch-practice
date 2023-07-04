@@ -50,10 +50,74 @@ fetch(fetchProducts)
     // console.log(arrCat);
     let clearCategory = [...new Set(arrCat)];
     // console.log(clearCategory);
-    let p = document.createElement("p");
-    p.textContent = clearCategory;
-    p.style.cursor = 'pointer'
-    users.insertAdjacentElement("afterend", p);
+    //
+    // let btnCategory = document.createElement("button");
+    //     btnCategory.textContent = clearCategory;
+    //     btnCategory.style.cursor = "pointer";
+    //
+    for (let index = 0; index < clearCategory.length; index++) {
+      let element = clearCategory[index];
+      let btnCategory = document.createElement("button");
+      btnCategory.textContent = element;
+      btnCategory.style.cursor = "pointer";
+      rangeInput.insertAdjacentElement("afterend", btnCategory);
+      btnCategory.id = "button" + index;
+
+      btnCategory.addEventListener("click", (e) => {
+        box.innerHTML = "";
+
+        let categoris = document.getElementById(e.target.id).textContent;
+
+        fetch(fetchProducts)
+          .then((res) => res.json())
+          .then((json) => {
+            allArray = json.products;
+
+            for (let index = 0; index < allArray.length; index++) {
+              const element = allArray[index];
+              if (element.category === categoris) {
+                //ств елементти
+                let element = allArray[index].title;
+                let pricEl = allArray[index].price;
+                let imgTovary = allArray[index].images[0];
+
+                const newBigDiv = document.createElement("div");
+                newBigDiv.className = "bigDiv";
+
+                const newImgProducts = document.createElement("div");
+                newImgProducts.className = "imgProducts";
+
+                const newMainImg = document.createElement("img");
+                newMainImg.className = "mainImg";
+                newMainImg.src = imgTovary;
+                newMainImg.alt = "товар";
+
+                const newBasketImg = document.createElement("img");
+                newBasketImg.src = "./img/busket.png";
+                newBasketImg.alt = "корзина";
+                newBasketImg.className = "basket";
+
+                const newProName = document.createElement("p");
+                newProName.className = "proName";
+                newProName.textContent = element;
+
+                const newProPrice = document.createElement("p");
+                newProPrice.className = "proPrice";
+                newProPrice.textContent = `$ ${pricEl}`;
+
+                newImgProducts.appendChild(newMainImg);
+                newImgProducts.appendChild(newBasketImg);
+                newBigDiv.appendChild(newImgProducts);
+                newBigDiv.appendChild(newProName);
+                newBigDiv.appendChild(newProPrice);
+
+                box.appendChild(newBigDiv);
+                //
+              }
+            }
+          });
+      });
+    }
   });
 
 // .........повзунок...........
@@ -73,7 +137,7 @@ rangeInput.addEventListener("change", function () {
         const element = allArray[index].title;
         const pricEl = allArray[index].price;
         const category = allArray[index].category;
-
+        //task5
         let p = document.createElement("p");
         p.textContent = `${element}, price ${pricEl}$, category ${category}.`;
         // rangeInput.appendChild(p)
@@ -83,11 +147,6 @@ rangeInput.addEventListener("change", function () {
 
           console.log(element, ",", pricEl, ",", category);
         }
-
-        // if (category != category) {
-        //   p.textContent = category + " .";
-        //   body.appendChild(p);
-        // }
       }
     });
 });
@@ -111,7 +170,7 @@ rangeInput.addEventListener("change", function () {
 //     });
 // });
 // .......................................
-
+//HOME TASK 30 06
 const box = document.querySelector(".box");
 const bigDiv = document.querySelector(".bigDiv");
 const imgProducts = document.querySelector(".imgProducts");
@@ -127,7 +186,7 @@ fetch("https://dummyjson.com/products")
     for (let index = 0; index < allArray.length; index++) {
       let element = allArray[index].title;
       let pricEl = allArray[index].price;
-      let imgTovary = allArray[index].images[1];
+      let imgTovary = allArray[index].images[0];
 
       const newBigDiv = document.createElement("div");
       newBigDiv.className = "bigDiv";
@@ -224,4 +283,5 @@ const btn2 = document.querySelector("#b2");
 //   });
 // })
 
-// task3
+// .....................
+/////lesson 4 07
