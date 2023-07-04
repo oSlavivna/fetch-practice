@@ -3,9 +3,10 @@ const goods = document.querySelector("#goods");
 const users = document.querySelector("#users");
 // .....................
 let usersName = [];
+const fetchUsers = "https://dummyjson.com/users";
 
 users.addEventListener("click", () => {
-  fetch("https://dummyjson.com/users")
+  fetch(fetchUsers)
     .then((res) => res.json())
     .then((json) => {
       usersName = json.users;
@@ -27,42 +28,66 @@ setTimeout(() => {
 }, 5000);
 // ..................................
 let allArray = [];
-
+// PRODUCTS..........
 const fetchProducts = "https://dummyjson.com/products";
 
 fetch(fetchProducts)
   .then((res) => res.json())
   .then((json) => {
     allArray = json.products;
-    console.log(allArray);
+    // console.log(allArray);
+    let arrCat = [];
+
+    for (const item of allArray) {
+      // всі товари в консолі
+      // console.log(item.title);
+
+      let category = item.category;
+      arrCat.push(category);
+      /////
+    }
+    // вивисти категорії окремо на сторінці
+    // console.log(arrCat);
+    let clearCategory = [...new Set(arrCat)];
+    // console.log(clearCategory);
+    let p = document.createElement("p");
+    p.textContent = clearCategory;
+    p.style.cursor = 'pointer'
+    users.insertAdjacentElement("afterend", p);
   });
 
 // .........повзунок...........
+//task 3
 const rangeInput = document.getElementById("myRange");
 
 rangeInput.addEventListener("change", function () {
   rangeValue = rangeInput.value;
-
   console.log(rangeValue);
 
   fetch("https://dummyjson.com/products")
     .then((res) => res.json())
     .then((json) => {
       allArray = json.products;
+
       for (let index = 0; index < allArray.length; index++) {
         const element = allArray[index].title;
         const pricEl = allArray[index].price;
         const category = allArray[index].category;
-        if (pricEl >= rangeValue) {
-          console.log(element);
-        }
 
         let p = document.createElement("p");
+        p.textContent = `${element}, price ${pricEl}$, category ${category}.`;
+        // rangeInput.appendChild(p)
 
-        if (category != category) {
-          p.textContent = category + " .";
-          body.appendChild(p);
+        if (pricEl <= rangeValue) {
+          rangeInput.insertAdjacentElement("afterend", p);
+
+          console.log(element, ",", pricEl, ",", category);
         }
+
+        // if (category != category) {
+        //   p.textContent = category + " .";
+        //   body.appendChild(p);
+        // }
       }
     });
 });
@@ -142,3 +167,61 @@ fetch("https://dummyjson.com/products")
 // setTimeout(() => {
 //   console.log(allArray);
 // }, 5000);
+// repeat lesson 30 06
+const btn1 = document.querySelector("#b1");
+const btn2 = document.querySelector("#b2");
+/////task1
+// btn1.addEventListener("click", () => {
+//   fetch(fetchProducts)
+//     .then((res) => res.json())
+//     .then((json) => {
+//       allArray = json.products;
+
+//       for (const item of allArray) {
+//         console.log(item.title);
+//       }
+//     });
+// });
+
+// btn2.addEventListener('click', () => {
+//   fetch(fetchUsers)
+//     .then((res) => res.json())
+//     .then((json) => {
+//       usersName = json.users;
+
+// for (const iterator of usersName) {
+//   console.log(iterator.firstName, iterator.lastName );
+// }
+//     })
+// })
+//////
+//task2
+// btn1.addEventListener('click', () => {
+//   fetch(fetchProducts)
+//       .then((res) => res.json())
+//       .then((json) => {
+//         allArray = json.products;
+
+//         for (const item of allArray) {
+//           if(item.price<=50) {
+//           console.log(item.title);
+//         }
+//         }
+//       });
+// })
+
+// btn2.addEventListener('click', () => {
+//   fetch(fetchProducts)
+//   .then((res) => res.json())
+//   .then((json) => {
+//     allArray = json.products;
+
+//     for (const item of allArray) {
+//       if(item.price<=50) {
+//       console.log(item.title);
+//     }
+//     }
+//   });
+// })
+
+// task3

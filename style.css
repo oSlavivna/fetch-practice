@@ -18,7 +18,8 @@ body {
   margin: 0 auto;
 
   background: url("https://images.unsplash.com/photo-1686946347357-689d223fe958?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80")
-   center center/cover;
+    center ;
+  background-size: cover;
   width: 100vw;
   height: 100vh;
 }
@@ -66,5 +67,5 @@ input {
 .basket {
   position: absolute;
   bottom: 10px;
-  right: 10px;  
+  right: 10px;
 }
