@@ -8,21 +8,34 @@
 body {
   max-width: 1024px;
   font-family: "Ubuntu", sans-serif;
+  color: aliceblue;
   display: flex;
   flex-direction: column;
   align-items: center;
   /* justify-content: center; */
   gap: 1rem;
   padding: 1rem;
-
   margin: 0 auto;
-
   background: url("https://images.unsplash.com/photo-1686946347357-689d223fe958?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80")
     center;
   background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+
   width: 100vw;
   height: 100vh;
 }
+body::after {
+  background: rgba(0, 0, 0, 0.463);
+  content: "";
+  left: 0; 
+  position: fixed;
+  z-index: -1;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
 button,
 input {
   cursor: pointer;
@@ -32,13 +45,24 @@ input {
   border: none;
   border-radius: 15px;
   padding-inline: 20px;
+  background-color: rgb(182, 217, 255);
+}
+button:hover {
+  background-color: rgb(0, 123, 255);
+  color: white;
 }
 /*  */
+
+.input {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  align-items: center;
+}
 .box {
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
-  /* width: 400px; */
+  gap: 1rem; 
   justify-content: center;
 }
 .bigDiv {
@@ -46,7 +70,7 @@ input {
   font-size: 14px;
   width: 157px;
   height: 265px;
-  background-color: rgba(255, 255, 255, 0.568);
+  background-color: rgba(255, 255, 255, 0.731);
   border-radius: 10px;
   padding: 10px;
 }
@@ -57,6 +81,7 @@ input {
 }
 .proPrice {
   font-weight: bold;
+  color: black;
 }
 .imgProducts {
   border-radius: 10px;
